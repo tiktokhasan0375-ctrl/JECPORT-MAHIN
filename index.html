@@ -1,376 +1,730 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>JECPORT  MAHIN</title>
-  
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;900&family=Rajdhani:wght@700&family=Fira+Code:wght@600&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-  
-  <style>
-    :root {
-      --cyan: #00f3ff;
-      --pink: #ff00ff;
-      --gold: #ffcc00;
-      --bg: #020406; 
-      --card-bg: rgba(6, 11, 19, 0.9); 
-      --glass-border: rgba(0, 243, 255, 0.5);
-      --neon-glow: 0 0 20px rgba(0, 243, 255, 0.8);
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#060b18">
+<title>TPX HASAN | Premium Payment</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg: #060b18;
+    --panel: #0d172a;
+    --text: #f8fafc;
+    --muted: #a4b2c9;
+    --blue: #2587ff;
+    --gold: #ffc857;
+    --green: #18d6a0;
+    --pink: #ed1685;
+    --orange: #ff861b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    min-height: 100vh;
+    padding: 20px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text);
+    font-family: 'Inter','Hind Siliguri',sans-serif;
+    background:
+        radial-gradient(ellipse at 5% 5%,rgba(0,104,255,.20),transparent 35%),
+        radial-gradient(ellipse at 95% 90%,rgba(0,224,175,.10),transparent 35%),
+        #060b18;
+}
+
+button {
+    font-family: inherit;
+}
+
+.page {
+    width: 100%;
+    max-width: 470px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(75,145,255,.3);
+    border-radius: 25px;
+    background: linear-gradient(160deg,#101b30,#080e1c 65%,#0b1425);
+    box-shadow: 0 25px 80px rgba(0,0,0,.48);
+}
+
+/* HEADER */
+
+.hero {
+    position: relative;
+    padding: 27px 18px 24px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(66,136,255,.22);
+    background: linear-gradient(140deg,#142b4d,#0b1426 75%);
+}
+
+.hero::before,
+.hero::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(35px);
+    pointer-events: none;
+}
+
+.hero::before {
+    width: 170px;
+    height: 170px;
+    background: rgba(26,108,255,.22);
+    top: -100px;
+    left: -50px;
+}
+
+.hero::after {
+    width: 130px;
+    height: 130px;
+    background: rgba(255,184,55,.10);
+    right: -50px;
+    bottom: -80px;
+}
+
+.profile {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 15px;
+    padding: 4px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,#ffe49b,#ffae32,#2587ff);
+    box-shadow: 0 0 30px rgba(255,190,65,.2);
+}
+
+.profile img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #101c31;
+}
+
+.hero h1 {
+    position: relative;
+    font-size: clamp(22px,6vw,28px);
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.hero h1 span {
+    color: var(--gold);
+}
+
+.subtitle {
+    position: relative;
+    margin-top: 7px;
+    color: #b9c9e2;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.hero-desc {
+    position: relative;
+    margin-top: 12px;
+    color: #aebed6;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.secure-pill {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 15px;
+    padding: 8px 14px;
+    border: 1px solid rgba(24,214,160,.3);
+    border-radius: 50px;
+    background: rgba(24,214,160,.07);
+    color: #65efc3;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+/* CONTENT */
+
+.content {
+    padding: 21px 16px;
+}
+
+.heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.heading h2 {
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.heading small {
+    color: var(--muted);
+    font-size: 10px;
+}
+
+/* PAYMENT CARD */
+
+.payment-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 11px;
+    margin-bottom: 13px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 17px;
+    transition: transform .2s, box-shadow .2s;
+}
+
+.payment-card:active {
+    transform: scale(.985);
+}
+
+.bkash {
+    background: linear-gradient(115deg,rgba(237,22,133,.19),#11182a 80%);
+    border-color: rgba(237,22,133,.55);
+    box-shadow: inset 0 0 20px rgba(237,22,133,.035);
+}
+
+.nagad {
+    background: linear-gradient(115deg,rgba(255,134,27,.18),#11182a 80%);
+    border-color: rgba(255,134,27,.55);
+    box-shadow: inset 0 0 20px rgba(255,134,27,.035);
+}
+
+.binance {
+    background: linear-gradient(115deg,rgba(255,197,54,.17),#11182a 80%);
+    border-color: rgba(255,197,54,.55);
+    box-shadow: inset 0 0 20px rgba(255,197,54,.035);
+}
+
+.logo-box {
+    width: 68px;
+    height: 68px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px;
+    border-radius: 13px;
+    background: rgba(0,0,0,.23);
+    border: 1px solid rgba(255,255,255,.09);
+}
+
+.logo-box img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.payment-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.payment-name {
+    display: block;
+    color: #bdc9dc;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .8px;
+    margin-bottom: 7px;
+}
+
+.payment-number {
+    display: block;
+    color: #fff;
+    font-size: clamp(14px,3.8vw,17px);
+    font-weight: 800;
+    overflow-wrap: anywhere;
+    letter-spacing: .1px;
+}
+
+.payment-sub {
+    display: block;
+    margin-top: 6px;
+    color: #91a0b8;
+    font-size: 9px;
+}
+
+.copy-btn {
+    flex-shrink: 0;
+    min-width: 67px;
+    padding: 10px 8px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,.16);
+    background: rgba(255,255,255,.07);
+    color: white;
+    font-size: 10px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.bkash .copy-btn {
+    background: linear-gradient(135deg,#ef1684,#bc075c);
+    border-color: rgba(255,255,255,.18);
+}
+
+.nagad .copy-btn {
+    background: linear-gradient(135deg,#ff9d27,#e94b09);
+    border-color: rgba(255,255,255,.18);
+}
+
+.binance .copy-btn {
+    background: linear-gradient(135deg,#ffdb69,#e8a500);
+    color: #241b06;
+    border-color: rgba(255,255,255,.18);
+}
+
+.copy-btn:active {
+    transform: scale(.94);
+    filter: brightness(1.15);
+}
+
+/* SECURITY NOTE */
+
+.notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    margin-top: 18px;
+    padding: 14px;
+    border-radius: 14px;
+    background: rgba(37,135,255,.07);
+    border: 1px solid rgba(37,135,255,.23);
+}
+
+.notice-icon {
+    font-size: 21px;
+}
+
+.notice h3 {
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.notice p {
+    color: #aab9cf;
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+/* RULES */
+
+.section-title {
+    font-size: 14px;
+    font-weight: 800;
+    margin: 23px 0 12px;
+}
+
+.rules {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.rule {
+    padding: 13px 11px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,.09);
+    background: rgba(255,255,255,.025);
+}
+
+.rule h3 {
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.rule p {
+    color: #c3cede;
+    font-size: 11px;
+    line-height: 2;
+}
+
+.rule.good {
+    background: rgba(24,214,160,.055);
+    border-color: rgba(24,214,160,.38);
+}
+
+.rule.bad {
+    background: rgba(255,55,95,.05);
+    border-color: rgba(255,55,95,.38);
+}
+
+/* SUBMISSION */
+
+.submission {
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px solid rgba(37,135,255,.32);
+    background: linear-gradient(130deg,rgba(22,82,158,.14),rgba(255,255,255,.015));
+}
+
+.submission h3 {
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.submit-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    margin-top: 10px;
+    color: #cbd5e4;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.check {
+    width: 19px;
+    height: 19px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 6px;
+    background: rgba(24,214,160,.13);
+    color: #4ce8b6;
+    font-size: 11px;
+    font-weight: 900;
+}
+
+/* FOOTER */
+
+.footer {
+    padding: 17px 12px;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,.07);
+    background: rgba(0,0,0,.13);
+}
+
+.thank-you {
+    color: var(--gold);
+    font-size: 19px;
+    font-weight: 800;
+}
+
+.footer p {
+    margin-top: 7px;
+    color: #8596b1;
+    font-size: 10px;
+    line-height: 1.8;
+}
+
+/* TOAST */
+
+.toast {
+    position: fixed;
+    z-index: 999;
+    bottom: 24px;
+    left: 50%;
+    width: max-content;
+    max-width: calc(100% - 28px);
+    padding: 13px 18px;
+    transform: translate(-50%,20px);
+    opacity: 0;
+    visibility: hidden;
+    border: 1px solid rgba(24,214,160,.4);
+    border-radius: 13px;
+    background: #0d2927;
+    color: #d9fff3;
+    box-shadow: 0 10px 35px #0008;
+    font-size: 12px;
+    font-weight: 700;
+    transition: .25s;
+}
+
+.toast.show {
+    transform: translate(-50%,0);
+    opacity: 1;
+    visibility: visible;
+}
+
+@media(max-width:360px) {
+    .content {
+        padding: 17px 10px;
     }
 
-    body { 
-      margin: 0; background: var(--bg); color: #fff; 
-      font-family: 'Rajdhani', sans-serif; overflow: hidden; 
-      user-select: none; -webkit-tap-highlight-color: transparent;
+    .payment-card {
+        gap: 8px;
+        padding: 10px 7px;
     }
 
-    #loginOverlay {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: var(--bg); z-index: 99999; display: flex;
-      align-items: center; justify-content: center; backdrop-filter: blur(20px);
-    }
-    .login-box {
-      background: var(--card-bg); padding: 40px 30px; border-radius: 25px;
-      border: 2px solid var(--cyan); text-align: center; width: 85%; max-width: 350px;
-      box-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
-    }
-    .login-box h2 { font-family: 'Orbitron'; color: var(--cyan); margin-bottom: 25px; font-size: 18px; }
-    .login-box input {
-      width: 100%; padding: 12px; margin-bottom: 20px; border-radius: 10px;
-      border: 1px solid var(--glass-border); background: rgba(255,255,255,0.05);
-      color: #fff; text-align: center; font-family: 'Fira Code'; outline: none; box-sizing: border-box;
-    }
-    .login-box button {
-      width: 100%; padding: 12px; border-radius: 10px; border: none;
-      background: var(--cyan); color: #000; font-family: 'Orbitron';
-      font-weight: 900; cursor: pointer; box-shadow: 0 0 15px var(--cyan);
+    .logo-box {
+        width: 51px;
+        height: 56px;
+        padding: 5px;
     }
 
-    #bgCanvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
-
-    @keyframes textGlow {
-      0%, 100% { text-shadow: 0 0 10px var(--cyan); }
-      50% { text-shadow: 0 0 25px var(--cyan), 0 0 35px var(--cyan); }
+    .copy-btn {
+        min-width: 56px;
+        padding: 9px 5px;
+        font-size: 9px;
     }
 
-    #displayHackName {
-      color: var(--cyan);
-      font-family: 'Orbitron'; font-size: 26px; margin: 0; letter-spacing: 4px;
-      font-weight: 900; text-transform: uppercase;
-      animation: textGlow 2s infinite ease-in-out;
+    .payment-name {
+        font-size: 8px;
     }
 
-    header {
-      background: linear-gradient(180deg, rgba(0,243,255,0.2) 0%, transparent 100%);
-      padding: 30px 20px 20px; text-align: center;
-      border-bottom: 2px solid var(--glass-border);
-      backdrop-filter: blur(15px);
+    .hero h1 {
+        font-size: 21px;
     }
-
-    .premium-badge {
-      background: #ffcc00; color: #000; font-family: 'Orbitron'; font-size: 11px;
-      padding: 4px 14px; border-radius: 4px; font-weight: 900;
-      display: inline-block; margin-bottom: 10px; box-shadow: 0 0 15px var(--gold);
-    }
-
-    .view-screen { height: 100vh; width: 100%; overflow-y: auto; position: relative; display: none; }
-    .container { padding: 15px; max-width: 450px; margin: 0 auto; }
-
-    .premium-card { 
-      background: var(--card-bg); border: 2px solid var(--glass-border); 
-      border-radius: 25px; padding: 25px; margin-bottom: 20px; text-align: center; 
-      backdrop-filter: blur(30px); position: relative; overflow: hidden;
-      box-shadow: 0 10px 40px rgba(0, 243, 255, 0.2);
-    }
-
-    .radar-beam {
-      position: absolute; width: 200%; height: 200%;
-      background: conic-gradient(from 0deg, transparent, rgba(0, 243, 255, 0.2), transparent 50%);
-      top: -50%; left: -50%; animation: rotateRadar 3s linear infinite;
-      pointer-events: none;
-    }
-    @keyframes rotateRadar { to { transform: rotate(360deg); } }
-
-    #currentPeriod {
-      color: var(--gold); font-size: 15px; font-weight: 900;
-      text-shadow: 0 0 10px var(--gold); background: rgba(255, 204, 0, 0.1);
-      padding: 2px 10px; border-radius: 8px; border: 1px solid var(--gold);
-    }
-
-    #predictionBox { 
-      font-family: 'Orbitron'; font-size: 50px; font-weight: 900; 
-      margin: 5px 0; text-shadow: var(--neon-glow); color: #fff;
-    }
-    
-    #numberBox { 
-      font-family: 'Fira Code'; font-size: 16px; font-weight: 900; color: #fff; 
-      border: 2px solid var(--cyan); background: rgba(0, 243, 255, 0.2); 
-      padding: 10px 20px; border-radius: 12px; display: inline-block; margin-bottom: 10px;
-    }
-
-    .stat-box-hq { 
-      background: rgba(0, 243, 255, 0.05); border: 1px solid var(--glass-border); 
-      border-radius: 18px; padding: 15px 5px; text-align: center;
-    }
-
-    .stat-label { font-size: 10px; color: #aaa; font-family: 'Orbitron'; font-weight: 900; }
-    .stat-val { font-size: 24px; font-weight: 900; display: block; margin-top: 5px; }
-
-    .console-hq { 
-      background: rgba(0,0,0,0.8); border-left: 3px solid var(--cyan); 
-      border-radius: 8px; padding: 12px; font-family: 'Fira Code'; 
-      font-size: 11px; color: #00ffaa; height: 80px; overflow-y: auto; margin-bottom: 20px; 
-    }
-    
-    .data-table-container { 
-      background: var(--card-bg); border-radius: 20px; border: 1px solid var(--glass-border); 
-      overflow: hidden; margin-bottom: 30px;
-    }
-    .tabs-hq { display: flex; background: rgba(0, 243, 255, 0.1); padding: 5px; }
-    .tab-hq { 
-      flex: 1; padding: 12px; border: none; background: transparent; color: #fff; 
-      font-family: 'Orbitron'; font-size: 10px; font-weight: 900; cursor: pointer;
-    }
-    .tab-hq.active { background: var(--cyan); color: #000; border-radius: 10px; }
-
-    table { width: 100%; border-collapse: collapse; }
-    th { font-size: 9px; color: var(--cyan); padding: 12px 5px; background: rgba(0,0,0,0.5); }
-    td { padding: 15px 2px; font-size: 13px; font-weight: 900; border-bottom: 1px solid rgba(0,243,255,0.1); text-align: center; }
-
-    .footer-text { text-align: center; padding: 20px; font-size: 11px; color: var(--cyan); font-family: 'Fira Code'; font-weight: 900; }
-  </style>
+}
+</style>
 </head>
-<body oncontextmenu="return false;">
 
-  <div id="loginOverlay">
-    <div class="login-box">
-      <h2>JECPORT  MAHIN</h2>
-      <input type="password" id="passInput" placeholder="Enter License Key">
-      <button onclick="checkPass()">Login</button>
-      <p id="errorMsg" style="color: #ff3366; font-size: 12px; margin-top: 15px; display: none;">ACCESS DENIED! WRONG KEY.</p>
-    </div>
-  </div>
+<body>
 
-  <canvas id="bgCanvas"></canvas>
+<main class="page">
 
-  <div id="toolScreen" class="view-screen">
-    <header>
-      <div class="premium-badge">JECPORT  MAHIN</div>
-      <h1 id="displayHackName">JECPORT  MAHIN</h1>
+    <!-- PREMIUM PROFILE HEADER -->
+    <header class="hero">
+
+        <div class="profile">
+            <img
+                src="https://i.ibb.co.com/TDh9zHHb/IMG-20261025-010506-460.jpg"
+                alt="TPX HASAN"
+                onerror="this.onerror=null;this.src='https://i.ibb.co/TDh9zHHb/IMG-20261025-010506-460.jpg';"
+            >
+        </div>
+
+        <h1>TPX <span>HASAN</span></h1>
+
+        <div class="subtitle">OFFICIAL PAYMENT PORTAL</div>
+
+        <p class="hero-desc">
+            নিরাপদ লেনদেন • দ্রুত সার্ভিস • সহজ পেমেন্ট
+        </p>
+
+        <div class="secure-pill">
+            <span>✦</span>
+            <span>PAYMENT INFORMATION</span>
+        </div>
+
     </header>
 
-    <div class="container">
-      <div class="premium-card">
-          <div class="radar-beam"></div>
-          <div style="display:flex; justify-content:space-between; align-items: center; font-family:'Orbitron'; margin-bottom: 15px; position: relative; z-index: 20;">
-            <span style="color:#fff; font-size: 20px;">NEXT PERIOD: <span id="currentPeriod">---</span></span>
-            <span style="color:var(--cyan); font-size: 20px; font-weight: 900;">TIMER: <span id="countdown">30s</span></span>
-          </div>
-          
-          <div id="predictionBox" style="position: relative; z-index: 20;">WAIT</div>
-          <div id="numberBox" style="position: relative; z-index: 20;">AI ANALYZING...</div>
-          
-          <div style="margin-top:20px; position: relative; z-index: 20;">
-              <div style="display:flex; justify-content:space-between; font-size:11px; margin-bottom:8px; font-family:'Orbitron'; font-weight:900;">
-                  <span style="color:#aaa">AI CONFIDENCE</span>
-                  <span id="confTxt" style="color:var(--cyan)">0%</span>
-              </div>
-              <div style="height:6px; width:100%; background:rgba(255,255,255,0.1); border-radius:10px; overflow:hidden; border: 1px solid rgba(0,243,255,0.3);">
-                <div id="confBar" style="height:100%; width:0%; background:linear-gradient(90deg, var(--cyan), var(--pink)); transition:2s ease-out;"></div>
-              </div>
-          </div>
-      </div>
+    <section class="content">
 
-      <div class="console-hq" id="aiLogs">>_ INITIALIZING AI ENGINE...</div>
+        <div class="heading">
+            <h2>💳 পেমেন্ট মেথড</h2>
+            <small>Tap to Copy</small>
+        </div>
 
-      <div class="stats-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
-        <div class="stat-box-hq"><span class="stat-label">PRECISION</span><span id="accuracyRate" class="stat-val" style="color:var(--cyan);">0%</span></div>
-        <div class="stat-box-hq"><span class="stat-label">STREAK</span><span id="winStreak" class="stat-val" style="color:var(--pink);">0</span></div>
-        <div class="stat-box-hq"><span class="stat-label">WINS</span><span id="winsCount" class="stat-val" style="color:#00ffaa;">0</span></div>
-        <div class="stat-box-hq"><span class="stat-label">LOSS</span><span id="lossesCount" class="stat-val" style="color:#ff3366;">0</span></div>
-      </div>
+        <!-- BKASH -->
+        <article class="payment-card bkash">
 
-      <div class="data-table-container">
-          <div class="tabs-hq">
-            <button id="predTab" class="tab-hq active" onclick="switchTab('pred')">VVIP LOGS</button>
-            <button id="numTab" class="tab-hq" onclick="switchTab('num')">NUMBERS</button>
-            <button id="gameTab" class="tab-hq" onclick="switchTab('game')">HISTORY</button>
-          </div>
-          <div style="max-height: 250px; overflow-y: auto;">
-            <table id="dataTable">
-                <thead id="tableHeader"></thead>
-                <tbody id="tableBody"></tbody>
-            </table>
-          </div>
-      </div>
-      <div class="footer-text"></div>
-    </div>
-  </div>
+            <div class="logo-box">
+                <img
+                    src="https://files.catbox.moe/u73hdj.png"
+                    alt="bKash Logo"
+                    loading="eager"
+                >
+            </div>
+
+            <div class="payment-info">
+                <span class="payment-name">BKASH PERSONAL</span>
+                <span class="payment-number">01820315013</span>
+                <span class="payment-sub">Fast • Convenient</span>
+            </div>
+
+            <button class="copy-btn"
+                onclick="copyNum('01820315013','bKash',this)">
+                ▢ COPY
+            </button>
+
+        </article>
+
+        <!-- NAGAD -->
+        <article class="payment-card nagad">
+
+            <div class="logo-box">
+                <img
+                    src="https://files.catbox.moe/nkqw14.png"
+                    alt="Nagad Logo"
+                    loading="eager"
+                >
+            </div>
+
+            <div class="payment-info">
+                <span class="payment-name">NAGAD PERSONAL</span>
+                <span class="payment-number">01765943426</span>
+                <span class="payment-sub">Fast • Convenient</span>
+            </div>
+
+            <button class="copy-btn"
+                onclick="copyNum('01765943426','Nagad',this)">
+                ▢ COPY
+            </button>
+
+        </article>
+
+        <!-- BINANCE -->
+        <article class="payment-card binance">
+
+            <div class="logo-box">
+                <img
+                    src="https://files.catbox.moe/q4kw4f.png"
+                    alt="Binance Logo"
+                    loading="eager"
+                >
+            </div>
+
+            <div class="payment-info">
+                <span class="payment-name">BINANCE PAY ID</span>
+                <span class="payment-number">1046800356</span>
+                <span class="payment-sub">Digital Payment</span>
+            </div>
+
+            <button class="copy-btn"
+                onclick="copyNum('1046800356','Binance',this)">
+                ▢ COPY
+            </button>
+
+        </article>
+
+        <!-- PAYMENT NOTICE -->
+        <div class="notice">
+            <div class="notice-icon">🔐</div>
+            <div>
+                <h3>পেমেন্ট করার আগে নির্দেশনা পড়ুন</h3>
+                <p>
+                    সঠিক পেমেন্ট মেথড ও প্রাপকের তথ্য যাচাই করুন।
+                    লেনদেন সম্পন্ন হলে TrxID ও স্ক্রিনশট সংরক্ষণ করুন।
+                </p>
+            </div>
+        </div>
+
+        <!-- PAYMENT RULES -->
+        <h3 class="section-title">📌 পেমেন্টের নিয়মাবলি</h3>
+
+        <div class="rules">
+
+            <div class="rule good">
+                <h3>✅ যা করতে পারবেন</h3>
+                <p>
+                    • Send Money<br>
+                    • Cash In (Agent)
+                </p>
+            </div>
+
+            <div class="rule bad">
+                <h3>❌ যা করবেন না</h3>
+                <p>
+                    • Cash Out<br>
+                    • Mobile Recharge
+                </p>
+            </div>
+
+        </div>
+
+        <!-- SUBMISSION REQUIREMENTS -->
+        <div class="submission">
+
+            <h3>📝 পেমেন্টের পর যা জমা দিবেন</h3>
+
+            <div class="submit-row">
+                <span class="check">✓</span>
+                <span>পেমেন্টের পরিষ্কার স্ক্রিনশট</span>
+            </div>
+
+            <div class="submit-row">
+                <span class="check">✓</span>
+                <span>আপনার নম্বরের শেষ ৪টি ডিজিট</span>
+            </div>
+
+            <div class="submit-row">
+                <span class="check">✓</span>
+                <span>ট্রানজেকশন আইডি (TrxID)</span>
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer class="footer">
+        <div class="thank-you">Thank You ✦</div>
+        <p>© 2026 TPX HASAN</p>
+        <p>Payment Information • Please Verify Details</p>
+    </footer>
+
+</main>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
 
 <script>
-  function checkPass() {
-    const input = document.getElementById('passInput').value;
-    if(input === "hasanjcd037") {
-      document.getElementById('loginOverlay').style.display = 'none';
-      document.getElementById('toolScreen').style.display = 'block';
-      startApp();
-    } else {
-      document.getElementById('errorMsg').style.display = 'block';
-    }
-  }
+let toastTimer;
 
-  let sessionPredictions = [];
-  let sessionNumPredictions = [];
-  let state = { results: [], wins: 0, losses: 0, streak: 0, lastP: null, curPred: null, cd: 30, activeTab: 'pred' };
+function showToast(message) {
+    const toast = document.getElementById('toast');
 
-  const canvas = document.getElementById('bgCanvas');
-  const ctx = canvas.getContext('2d');
-  let particles = [];
-  function initParticles() {
-      canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-      particles = [];
-      for(let i=0; i<120; i++) {
-          particles.push({ 
-            x: Math.random()*canvas.width, y: Math.random()*canvas.height, 
-            vx: (Math.random()-0.5)*0.6, vy: (Math.random()-0.5)*0.6, 
-            size: Math.random()*2.5, color: Math.random() > 0.5 ? '#00f3ff' : '#ff00ff'
-          });
-      }
-  }
-  function drawParticles() {
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      particles.forEach(p => {
-          p.x += p.vx; p.y += p.vy;
-          if(p.x<0 || p.x>canvas.width) p.vx*=-1;
-          if(p.y<0 || p.y>canvas.height) p.vy*=-1;
-          ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
-          ctx.fillStyle = p.color; ctx.globalAlpha = 0.4; ctx.fill();
-      });
-      requestAnimationFrame(drawParticles);
-  }
-  initParticles(); drawParticles();
+    toast.textContent = message;
+    toast.classList.add('show');
 
-  function startApp() {
-    const fetchData = async () => {
-      try {
-        const r = await fetch('https://draw.ar-lottery01.com/WinGo/WinGo_30S/GetHistoryIssuePage.json?ts='+Date.now());
-        const d = await r.json();
-        if(d.code === 0) processServerData(d.data.list);
-      } catch(e) { console.log("Network Error"); }
-    };
-    fetchData();
-    setInterval(fetchData, 2000); 
-    setInterval(() => { if(state.cd > 0) state.cd--; document.getElementById('countdown').innerText = state.cd + 's'; }, 1000);
-  }
+    clearTimeout(toastTimer);
 
-  // সবার ফোনে একই সিগন্যাল দেখানোর জন্য পিরিয়ড-ভিত্তিক অ্যালগরিদম
-  function getAIPrediction(history) {
-    const nextIssue = String(BigInt(history[0].issueNumber) + 1n);
-    // পিরিয়ড নাম্বারের শেষ ৪ ডিজিট নিয়ে একটি সিড ভ্যালু তৈরি (সবার ফোনে সেম হবে)
-    const seed = parseInt(nextIssue.slice(-4));
-    
-    // সিগন্যাল টাইপ ক্যালকুলেশন (BIG/SMALL)
-    const aiType = (seed * 7 + 13) % 2 === 0 ? "BIG" : "SMALL";
-    
-    // নাম্বার ক্যালকুলেশন (সবার জন্য একই ২টি নাম্বার)
-    let numPool = aiType === "BIG" ? [5, 6, 7, 8, 9] : [0, 1, 2, 3, 4];
-    let n1 = numPool[seed % 5];
-    let n2 = numPool[(seed + 3) % 5];
-    
-    return { type: aiType, nums: [n1, n2] };
-  }
+    toastTimer = setTimeout(() => {
+        toast.classList.remove('show');
+    }, 2200);
+}
 
-  function processServerData(list) {
-    const latest = list[0];
-    if(latest.issueNumber !== state.lastP) {
-      if(state.curPred && state.curPred.period === latest.issueNumber) {
-        const actualType = (parseInt(latest.number) >= 5 ? 'BIG' : 'SMALL');
-        const actualNum = parseInt(latest.number);
-        const isWin = (state.curPred.pick === actualType);
-        const isNumWin = state.curPred.nums.includes(actualNum);
+async function copyNum(number, provider, button) {
+    try {
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(number);
+        } else {
+            const input = document.createElement('textarea');
 
-        sessionPredictions.unshift({ p: latest.issueNumber, pick: state.curPred.pick, win: isWin });
-        sessionNumPredictions.unshift({ p: latest.issueNumber, picks: state.curPred.nums, res: actualNum, win: isNumWin });
+            input.value = number;
+            input.setAttribute('readonly', '');
+            input.style.position = 'fixed';
+            input.style.left = '-9999px';
 
-        if(isWin || isNumWin) { 
-          state.wins++; state.streak++; 
-          confetti({particleCount:100, spread:70, origin:{y:0.6}}); 
-          addLog(`AI HIT! [${actualNum} ${actualType}]`); 
-        } else { 
-          state.losses++; state.streak=0; 
-          addLog(`CALIBRATING... [${actualNum}]`); 
+            document.body.appendChild(input);
+            input.select();
+
+            const copied = document.execCommand('copy');
+            input.remove();
+
+            if (!copied) {
+                throw new Error('Copy failed');
+            }
         }
-        updateStats();
-      }
-      
-      const nextP = String(BigInt(latest.issueNumber) + 1n);
-      const prediction = getAIPrediction(list);
 
-      state.curPred = { period: nextP, pick: prediction.type, nums: prediction.nums };
-      state.lastP = latest.issueNumber; 
-      state.cd = 30; 
-      
-      document.getElementById('currentPeriod').innerText = nextP;
-      const pb = document.getElementById('predictionBox');
-      pb.innerText = prediction.type;
-      pb.style.color = prediction.type === 'BIG' ? 'var(--cyan)' : 'var(--pink)';
-      document.getElementById('numberBox').innerText = `AI TARGET: ${prediction.nums[0]} | ${prediction.nums[1]}`;
-      
-      // কনফিডেন্সও পিরিয়ড অনুযায়ী সেম থাকবে
-      let seed = parseInt(nextP.slice(-2));
-      let conf = 94 + (seed % 6);
-      document.getElementById('confTxt').innerText = conf + '%';
-      document.getElementById('confBar').style.width = conf + '%';
+        const previousText = button.innerHTML;
+
+        button.innerHTML = '✓ COPIED';
+        showToast('✓ ' + provider + ' নম্বর কপি হয়েছে!');
+
+        setTimeout(() => {
+            button.innerHTML = previousText;
+        }, 1600);
+
+    } catch (error) {
+        showToast('কপি হয়নি — নম্বরটি হাতে কপি করুন');
     }
-    state.results = list; 
-    renderTable();
-  }
-
-  function updateStats() {
-    const total = state.wins + state.losses;
-    document.getElementById('accuracyRate').innerText = Math.round((state.wins/(total||1))*100) + '%';
-    document.getElementById('winsCount').innerText = state.wins;
-    document.getElementById('lossesCount').innerText = state.losses;
-    document.getElementById('winStreak').innerText = state.streak;
-  }
-
-  function addLog(msg) {
-    const lb = document.getElementById('aiLogs');
-    lb.innerHTML += `<br>> ${msg}`;
-    lb.scrollTop = lb.scrollHeight;
-  }
-
-  function switchTab(t) {
-    state.activeTab = t;
-    document.querySelectorAll('.tab-hq').forEach(b => b.classList.remove('active'));
-    document.getElementById(t + 'Tab').classList.add('active');
-    renderTable();
-  }
-
-  function renderTable() {
-    const h = document.getElementById('tableHeader');
-    const b = document.getElementById('tableBody');
-    if(!b) return;
-    b.innerHTML = "";
-    if(state.activeTab === 'pred') {
-      h.innerHTML = '<tr><th>PERIOD (FULL)</th><th>SIGNAL</th><th>RESULT</th></tr>';
-      sessionPredictions.forEach(x => {
-        b.innerHTML += `<tr><td style="color:var(--gold)">${x.p}</td><td style="color:${x.pick==='BIG'?'var(--cyan)':'var(--pink)'}">${x.pick}</td><td style="color:${x.win?'#00ffaa':'#ff3366'}">${x.win?'WIN':'LOSS'}</td></tr>`;
-      });
-    } else if(state.activeTab === 'num') {
-      h.innerHTML = '<tr><th>PERIOD (FULL)</th><th>TARGETS</th><th>ACTUAL</th></tr>';
-      sessionNumPredictions.forEach(x => {
-        b.innerHTML += `<tr><td style="color:var(--gold)">${x.p}</td><td>${x.picks.join(',')}</td><td style="color:${x.win?'#00ffaa':'#ff3366'}">${x.win?'WIN':'LOSS'} (${x.res})</td></tr>`;
-      });
-    } else {
-      h.innerHTML = '<tr><th>PERIOD (FULL)</th><th>NUM</th><th>TYPE</th></tr>';
-      state.results.slice(0, 15).forEach(x => {
-        const sz = parseInt(x.number) >= 5 ? 'BIG' : 'SMALL';
-        b.innerHTML += `<tr><td style="color:var(--gold)">${x.issueNumber}</td><td>${x.number}</td><td style="color:${sz==='BIG'?'var(--cyan)':'var(--pink)'}">${sz}</td></tr>`;
-      });
-    }
-  }
+}
 </script>
+
 </body>
 </html>
