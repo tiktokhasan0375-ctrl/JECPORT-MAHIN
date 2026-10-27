@@ -1,730 +1,469 @@
+
 <!DOCTYPE html>
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#060b18">
-<title>TPX HASAN | Premium Payment</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#0a0000">
+<title>⚜️ XTR TRADING COMMUNITY ⚜️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Creepster&family=Orbitron:wght@600;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root {
-    --bg: #060b18;
-    --panel: #0d172a;
-    --text: #f8fafc;
-    --muted: #a4b2c9;
-    --blue: #2587ff;
-    --gold: #ffc857;
-    --green: #18d6a0;
-    --pink: #ed1685;
-    --orange: #ff861b;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-}
-
-body {
-    min-height: 100vh;
-    padding: 20px 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--text);
-    font-family: 'Inter','Hind Siliguri',sans-serif;
-    background:
-        radial-gradient(ellipse at 5% 5%,rgba(0,104,255,.20),transparent 35%),
-        radial-gradient(ellipse at 95% 90%,rgba(0,224,175,.10),transparent 35%),
-        #060b18;
-}
-
-button {
-    font-family: inherit;
-}
-
-.page {
-    width: 100%;
-    max-width: 470px;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid rgba(75,145,255,.3);
-    border-radius: 25px;
-    background: linear-gradient(160deg,#101b30,#080e1c 65%,#0b1425);
-    box-shadow: 0 25px 80px rgba(0,0,0,.48);
-}
-
-/* HEADER */
-
-.hero {
-    position: relative;
-    padding: 27px 18px 24px;
-    text-align: center;
-    overflow: hidden;
-    border-bottom: 1px solid rgba(66,136,255,.22);
-    background: linear-gradient(140deg,#142b4d,#0b1426 75%);
-}
-
-.hero::before,
-.hero::after {
-    content: "";
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(35px);
-    pointer-events: none;
-}
-
-.hero::before {
-    width: 170px;
-    height: 170px;
-    background: rgba(26,108,255,.22);
-    top: -100px;
-    left: -50px;
-}
-
-.hero::after {
-    width: 130px;
-    height: 130px;
-    background: rgba(255,184,55,.10);
-    right: -50px;
-    bottom: -80px;
-}
-
-.profile {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    margin: 0 auto 15px;
-    padding: 4px;
-    border-radius: 50%;
-    background: linear-gradient(135deg,#ffe49b,#ffae32,#2587ff);
-    box-shadow: 0 0 30px rgba(255,190,65,.2);
-}
-
-.profile img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid #101c31;
-}
-
-.hero h1 {
-    position: relative;
-    font-size: clamp(22px,6vw,28px);
-    font-weight: 900;
-    letter-spacing: 1px;
-}
-
-.hero h1 span {
-    color: var(--gold);
-}
-
-.subtitle {
-    position: relative;
-    margin-top: 7px;
-    color: #b9c9e2;
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 2px;
-}
-
-.hero-desc {
-    position: relative;
-    margin-top: 12px;
-    color: #aebed6;
-    font-size: 12px;
-    line-height: 1.8;
-}
-
-.secure-pill {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    margin-top: 15px;
-    padding: 8px 14px;
-    border: 1px solid rgba(24,214,160,.3);
-    border-radius: 50px;
-    background: rgba(24,214,160,.07);
-    color: #65efc3;
-    font-size: 10px;
-    font-weight: 800;
-}
-
-/* CONTENT */
-
-.content {
-    padding: 21px 16px;
-}
-
-.heading {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    margin-bottom: 15px;
-}
-
-.heading h2 {
-    font-size: 16px;
-    font-weight: 800;
-}
-
-.heading small {
-    color: var(--muted);
-    font-size: 10px;
-}
-
-/* PAYMENT CARD */
-
-.payment-card {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 13px 11px;
-    margin-bottom: 13px;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,.1);
-    border-radius: 17px;
-    transition: transform .2s, box-shadow .2s;
-}
-
-.payment-card:active {
-    transform: scale(.985);
-}
-
-.bkash {
-    background: linear-gradient(115deg,rgba(237,22,133,.19),#11182a 80%);
-    border-color: rgba(237,22,133,.55);
-    box-shadow: inset 0 0 20px rgba(237,22,133,.035);
-}
-
-.nagad {
-    background: linear-gradient(115deg,rgba(255,134,27,.18),#11182a 80%);
-    border-color: rgba(255,134,27,.55);
-    box-shadow: inset 0 0 20px rgba(255,134,27,.035);
-}
-
-.binance {
-    background: linear-gradient(115deg,rgba(255,197,54,.17),#11182a 80%);
-    border-color: rgba(255,197,54,.55);
-    box-shadow: inset 0 0 20px rgba(255,197,54,.035);
-}
-
-.logo-box {
-    width: 68px;
-    height: 68px;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 7px;
-    border-radius: 13px;
-    background: rgba(0,0,0,.23);
-    border: 1px solid rgba(255,255,255,.09);
-}
-
-.logo-box img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.payment-info {
-    flex: 1;
-    min-width: 0;
-}
-
-.payment-name {
-    display: block;
-    color: #bdc9dc;
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: .8px;
-    margin-bottom: 7px;
-}
-
-.payment-number {
-    display: block;
-    color: #fff;
-    font-size: clamp(14px,3.8vw,17px);
-    font-weight: 800;
-    overflow-wrap: anywhere;
-    letter-spacing: .1px;
-}
-
-.payment-sub {
-    display: block;
-    margin-top: 6px;
-    color: #91a0b8;
-    font-size: 9px;
-}
-
-.copy-btn {
-    flex-shrink: 0;
-    min-width: 67px;
-    padding: 10px 8px;
-    border-radius: 10px;
-    border: 1px solid rgba(255,255,255,.16);
-    background: rgba(255,255,255,.07);
-    color: white;
-    font-size: 10px;
-    font-weight: 900;
-    cursor: pointer;
-    transition: .2s;
-}
-
-.bkash .copy-btn {
-    background: linear-gradient(135deg,#ef1684,#bc075c);
-    border-color: rgba(255,255,255,.18);
-}
-
-.nagad .copy-btn {
-    background: linear-gradient(135deg,#ff9d27,#e94b09);
-    border-color: rgba(255,255,255,.18);
-}
-
-.binance .copy-btn {
-    background: linear-gradient(135deg,#ffdb69,#e8a500);
-    color: #241b06;
-    border-color: rgba(255,255,255,.18);
-}
-
-.copy-btn:active {
-    transform: scale(.94);
-    filter: brightness(1.15);
-}
-
-/* SECURITY NOTE */
-
-.notice {
-    display: flex;
-    align-items: flex-start;
-    gap: 11px;
-    margin-top: 18px;
-    padding: 14px;
-    border-radius: 14px;
-    background: rgba(37,135,255,.07);
-    border: 1px solid rgba(37,135,255,.23);
-}
-
-.notice-icon {
-    font-size: 21px;
-}
-
-.notice h3 {
-    font-size: 12px;
-    margin-bottom: 5px;
-}
-
-.notice p {
-    color: #aab9cf;
-    font-size: 11px;
-    line-height: 1.8;
-}
-
-/* RULES */
-
-.section-title {
-    font-size: 14px;
-    font-weight: 800;
-    margin: 23px 0 12px;
-}
-
-.rules {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-}
-
-.rule {
-    padding: 13px 11px;
-    border-radius: 14px;
-    border: 1px solid rgba(255,255,255,.09);
-    background: rgba(255,255,255,.025);
-}
-
-.rule h3 {
-    font-size: 12px;
-    margin-bottom: 10px;
-}
-
-.rule p {
-    color: #c3cede;
-    font-size: 11px;
-    line-height: 2;
-}
-
-.rule.good {
-    background: rgba(24,214,160,.055);
-    border-color: rgba(24,214,160,.38);
-}
-
-.rule.bad {
-    background: rgba(255,55,95,.05);
-    border-color: rgba(255,55,95,.38);
-}
-
-/* SUBMISSION */
-
-.submission {
-    margin-top: 15px;
-    padding: 15px;
-    border-radius: 15px;
-    border: 1px solid rgba(37,135,255,.32);
-    background: linear-gradient(130deg,rgba(22,82,158,.14),rgba(255,255,255,.015));
-}
-
-.submission h3 {
-    font-size: 13px;
-    margin-bottom: 12px;
-}
-
-.submit-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 9px;
-    margin-top: 10px;
-    color: #cbd5e4;
-    font-size: 12px;
-    line-height: 1.7;
-}
-
-.check {
-    width: 19px;
-    height: 19px;
-    flex-shrink: 0;
-    display: grid;
-    place-items: center;
-    border-radius: 6px;
-    background: rgba(24,214,160,.13);
-    color: #4ce8b6;
-    font-size: 11px;
-    font-weight: 900;
-}
-
-/* FOOTER */
-
-.footer {
-    padding: 17px 12px;
-    text-align: center;
-    border-top: 1px solid rgba(255,255,255,.07);
-    background: rgba(0,0,0,.13);
-}
-
-.thank-you {
-    color: var(--gold);
-    font-size: 19px;
-    font-weight: 800;
-}
-
-.footer p {
-    margin-top: 7px;
-    color: #8596b1;
-    font-size: 10px;
-    line-height: 1.8;
-}
-
-/* TOAST */
-
-.toast {
-    position: fixed;
-    z-index: 999;
-    bottom: 24px;
-    left: 50%;
-    width: max-content;
-    max-width: calc(100% - 28px);
-    padding: 13px 18px;
-    transform: translate(-50%,20px);
-    opacity: 0;
-    visibility: hidden;
-    border: 1px solid rgba(24,214,160,.4);
-    border-radius: 13px;
-    background: #0d2927;
-    color: #d9fff3;
-    box-shadow: 0 10px 35px #0008;
-    font-size: 12px;
-    font-weight: 700;
-    transition: .25s;
-}
-
-.toast.show {
-    transform: translate(-50%,0);
-    opacity: 1;
-    visibility: visible;
-}
-
-@media(max-width:360px) {
-    .content {
-        padding: 17px 10px;
-    }
-
-    .payment-card {
-        gap: 8px;
-        padding: 10px 7px;
-    }
-
-    .logo-box {
-        width: 51px;
-        height: 56px;
-        padding: 5px;
-    }
-
-    .copy-btn {
-        min-width: 56px;
-        padding: 9px 5px;
-        font-size: 9px;
-    }
-
-    .payment-name {
-        font-size: 8px;
-    }
-
-    .hero h1 {
-        font-size: 21px;
-    }
-}
+*{box-sizing:border-box;margin:0;padding:0;user-select:none;-webkit-tap-highlight-color:transparent}
+html,body{width:100%;height:100%;background:#0a0000;overflow:hidden;font-family:'Rajdhani',sans-serif}
+#frame-wrap{position:fixed;inset:0;z-index:0;background:#0a0000}
+#bg-frame{position:absolute;width:125%;height:125%;left:-12.5%;top:-2%;border:0;transform:scale(.8);transform-origin:top center;background:#fff}
+#main-wrapper{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);display:none;align-items:center;justify-content:center;z-index:9999;cursor:move;touch-action:none}
+.wing{position:absolute;top:50%;width:80px;height:115px;background-size:contain;background-position:center;background-repeat:no-repeat;filter:drop-shadow(0 0 15px rgba(255,0,0,.8));pointer-events:none}
+.w-left{right:50%;margin-right:80px;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 150' fill='none'><path d='M50 10 L10 50 L50 90 L90 50 L50 10' stroke='red' stroke-width='3'/></svg>");animation:flapL .6s ease-in-out infinite alternate}
+.w-right{left:50%;margin-left:80px;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 150' fill='none'><path d='M50 10 L10 50 L50 90 L90 50 L50 10' stroke='red' stroke-width='3'/></svg>");animation:flapR .6s ease-in-out infinite alternate}
+@keyframes flapL{to{transform:translateY(-50%) rotateY(65deg) rotateZ(-10deg)}}
+@keyframes flapR{to{transform:translateY(-50%) rotateY(-65deg) rotateZ(10deg)}}
+
+#main{width:190px;height:190px;background:#1a0000;border:3px solid #f00;border-radius:20px;display:flex;flex-direction:column;gap:4px;position:relative;padding:6px;box-shadow:0 0 10px #f00,inset 0 0 10px #f00;z-index:10}
+.grid-bg{position:absolute;inset:0;border-radius:17px;background:repeating-linear-gradient(45deg,rgba(255,0,0,.1) 0,rgba(255,0,0,.1) 1px,transparent 1px,transparent 15px);pointer-events:none}
+.header{display:flex;justify-content:center;align-items:center;width:100%;z-index:2}
+.title-text{font-family:'Creepster',cursive;font-size:9px;color:#fff;text-shadow:0 0 8px #f00;letter-spacing:1px;text-align:center}
+.sys-bar{width:100%;display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,.7);border:1px solid rgba(255,0,0,.3);border-radius:15px;padding:2px 5px;color:#fff;font-family:'Orbitron',sans-serif;font-size:7px;font-weight:700;text-shadow:0 0 5px #f00;z-index:2}
+.live-dot{display:inline-block;width:5px;height:5px;background:#f00;border-radius:50%;animation:blink 1s infinite;margin-right:4px}
+@keyframes blink{50%{opacity:.2}}
+#timer-text{color:#0f0;text-shadow:0 0 6px #0f0;font-size:8px}
+#content{flex:1;display:flex;flex-direction:column;gap:10px;z-index:2;width:100%;min-height:0}
+.ai-result-box{width:100%;flex:1;border:1px solid rgba(255,0,0,.4);border-radius:12px;padding:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;background:rgba(26,0,0,.95)}
+.text-group{display:flex;flex-direction:column;align-items:center;gap:2px}
+.spider-ring{width:32px;height:32px;border-radius:50%;border:2px solid #f00;background:#000;display:flex;align-items:center;justify-content:center}
+.status-title{font-family:'Creepster',cursive;font-size:12px;color:#fff;text-shadow:0 0 8px red;letter-spacing:2px}
+.status-sub{font-family:'Orbitron',sans-serif;font-size:8px;font-weight:800;color:#ff8080;letter-spacing:1px}
+.status-desc{font-size:7px;font-weight:600;color:#ffcccc}
+.buttons-area{display:flex;gap:10px;width:100%;z-index:2}
+.btn{flex:1;padding:5px 0;border-radius:10px;font-family:'Creepster',cursive;font-size:16px;letter-spacing:1.5px;cursor:pointer;border:none}
+.btn-action{background:linear-gradient(180deg,#f33,#900);color:#fff;box-shadow:0 0 8px rgba(255,0,0,.6)}
+.btn-hide{background:#1a1a1a;color:#fff;border:1px solid #333}
+.progress-bar{width:85%;height:3px;background:rgba(255,0,0,.2);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,#f00,#f66,#f00);animation:slideGlow 2s linear infinite}
+@keyframes slideGlow{to{background-position:200% 0}}
+.ai-result-row{display:flex;align-items:center;justify-content:center;gap:8px}
+.text-result{color:#fff;font-family:'Creepster',cursive;font-size:26px;text-shadow:0 0 10px #f00;letter-spacing:2px}
+.num-container{position:relative;width:34px;height:34px;display:flex;align-items:center;justify-content:center}
+.num-spin-border{position:absolute;inset:0;border-radius:50%;border:3px solid transparent;border-top:3px solid #f00;border-right:3px solid #f66;animation:spin 1s linear infinite}
+.result-num-img{width:28px;height:28px;z-index:2}
+.period-wrapper{width:100%;display:flex;justify-content:center}
+.glass-period-box{background:rgba(0,0,0,.75);border:1px solid rgba(255,0,0,.4);border-radius:15px;padding:1px 8px;color:#fff;font-family:'Orbitron',sans-serif;font-size:7px;font-weight:700}
+.color-tag{font-size:6px;font-family:'Orbitron',sans-serif;font-weight:700;margin-top:2px;letter-spacing:1px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+#mini{position:fixed;bottom:20px;right:20px;width:55px;height:55px;border-radius:50%;display:none;align-items:center;justify-content:center;cursor:pointer;z-index:9998}
+.spin-ring-1{position:absolute;width:55px;height:55px;border:3px solid transparent;border-top:3px solid #f00;border-bottom:3px solid #f33;border-radius:50%;animation:spin 1.5s linear infinite}
+.spin-ring-2{position:absolute;width:47px;height:47px;border:2px dashed transparent;border-left:2px dashed #fff;border-right:2px dashed #f00;border-radius:50%;animation:spin 1.8s linear infinite reverse}
+#mini img{width:40px;height:40px;object-fit:cover;border-radius:50%;border:2px solid #f00;z-index:4}
+
+#pass-box{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:160px;padding:12px;background:#1a0000;border:2px solid #f00;border-radius:12px;display:none;flex-direction:column;gap:8px;align-items:center;z-index:10000;box-shadow:0 0 15px #f00}
+#pass-box input{width:100%;padding:7px;background:#000;border:1px solid #f33;color:#fff;text-align:center;font-size:11px;border-radius:5px;font-family:'Orbitron',sans-serif;user-select:text}
+#pass-box button{width:100%;padding:6px;background:linear-gradient(180deg,#f33,#900);color:#fff;border:none;border-radius:5px;font-weight:bold;font-size:12px}
+#pass-msg{font-size:8px;color:#ff7777;text-align:center}
+
+@media(max-width:380px){#bg-frame{transform:scale(.76)}}
+@media(min-width:500px){#bg-frame{transform:scale(.90)}}
 </style>
 </head>
-
 <body>
 
-<main class="page">
+<div id="frame-wrap">
+  <iframe id="bg-frame" src="https://dkwin10.com/#/register?invitationCode=411522198177" allow="fullscreen" scrolling="yes"></iframe>
+</div>
 
-    <!-- PREMIUM PROFILE HEADER -->
-    <header class="hero">
+<div id="mini" onclick="openM()">
+  <div class="spin-ring-1"></div>
+  <div class="spin-ring-2"></div>
+  <img src="https://i.ibb.co/2Jk2Xnv/IMG-20260918-153557-439.jpg" alt="Spider">
+</div>
 
-        <div class="profile">
-            <img
-                src="https://i.ibb.co.com/TDh9zHHb/IMG-20261025-010506-460.jpg"
-                alt="TPX HASAN"
-                onerror="this.onerror=null;this.src='https://i.ibb.co/TDh9zHHb/IMG-20261025-010506-460.jpg';"
-            >
-        </div>
+<div id="main-wrapper">
+  <div class="wing w-left"></div>
+  <div class="wing w-right"></div>
 
-        <h1>TPX <span>HASAN</span></h1>
+  <div id="pass-box">
+    <div style="color:#fff;font-size:10px;font-family:Orbitron">ENTER PASSWORD</div>
+    <input type="password" id="pass-input" placeholder="Enter password" autocomplete="off">
+    <button onclick="checkPassword()">SUBMIT</button>
+    <div id="pass-msg"></div>
+  </div>
 
-        <div class="subtitle">OFFICIAL PAYMENT PORTAL</div>
-
-        <p class="hero-desc">
-            নিরাপদ লেনদেন • দ্রুত সার্ভিস • সহজ পেমেন্ট
-        </p>
-
-        <div class="secure-pill">
-            <span>✦</span>
-            <span>PAYMENT INFORMATION</span>
-        </div>
-
-    </header>
-
-    <section class="content">
-
-        <div class="heading">
-            <h2>💳 পেমেন্ট মেথড</h2>
-            <small>Tap to Copy</small>
-        </div>
-
-        <!-- BKASH -->
-        <article class="payment-card bkash">
-
-            <div class="logo-box">
-                <img
-                    src="https://files.catbox.moe/u73hdj.png"
-                    alt="bKash Logo"
-                    loading="eager"
-                >
-            </div>
-
-            <div class="payment-info">
-                <span class="payment-name">BKASH PERSONAL</span>
-                <span class="payment-number">01820315013</span>
-                <span class="payment-sub">Fast • Convenient</span>
-            </div>
-
-            <button class="copy-btn"
-                onclick="copyNum('01820315013','bKash',this)">
-                ▢ COPY
-            </button>
-
-        </article>
-
-        <!-- NAGAD -->
-        <article class="payment-card nagad">
-
-            <div class="logo-box">
-                <img
-                    src="https://files.catbox.moe/nkqw14.png"
-                    alt="Nagad Logo"
-                    loading="eager"
-                >
-            </div>
-
-            <div class="payment-info">
-                <span class="payment-name">NAGAD PERSONAL</span>
-                <span class="payment-number">01765943426</span>
-                <span class="payment-sub">Fast • Convenient</span>
-            </div>
-
-            <button class="copy-btn"
-                onclick="copyNum('01765943426','Nagad',this)">
-                ▢ COPY
-            </button>
-
-        </article>
-
-        <!-- BINANCE -->
-        <article class="payment-card binance">
-
-            <div class="logo-box">
-                <img
-                    src="https://files.catbox.moe/q4kw4f.png"
-                    alt="Binance Logo"
-                    loading="eager"
-                >
-            </div>
-
-            <div class="payment-info">
-                <span class="payment-name">BINANCE PAY ID</span>
-                <span class="payment-number">1046800356</span>
-                <span class="payment-sub">Digital Payment</span>
-            </div>
-
-            <button class="copy-btn"
-                onclick="copyNum('1046800356','Binance',this)">
-                ▢ COPY
-            </button>
-
-        </article>
-
-        <!-- PAYMENT NOTICE -->
-        <div class="notice">
-            <div class="notice-icon">🔐</div>
-            <div>
-                <h3>পেমেন্ট করার আগে নির্দেশনা পড়ুন</h3>
-                <p>
-                    সঠিক পেমেন্ট মেথড ও প্রাপকের তথ্য যাচাই করুন।
-                    লেনদেন সম্পন্ন হলে TrxID ও স্ক্রিনশট সংরক্ষণ করুন।
-                </p>
-            </div>
-        </div>
-
-        <!-- PAYMENT RULES -->
-        <h3 class="section-title">📌 পেমেন্টের নিয়মাবলি</h3>
-
-        <div class="rules">
-
-            <div class="rule good">
-                <h3>✅ যা করতে পারবেন</h3>
-                <p>
-                    • Send Money<br>
-                    • Cash In (Agent)
-                </p>
-            </div>
-
-            <div class="rule bad">
-                <h3>❌ যা করবেন না</h3>
-                <p>
-                    • Cash Out<br>
-                    • Mobile Recharge
-                </p>
-            </div>
-
-        </div>
-
-        <!-- SUBMISSION REQUIREMENTS -->
-        <div class="submission">
-
-            <h3>📝 পেমেন্টের পর যা জমা দিবেন</h3>
-
-            <div class="submit-row">
-                <span class="check">✓</span>
-                <span>পেমেন্টের পরিষ্কার স্ক্রিনশট</span>
-            </div>
-
-            <div class="submit-row">
-                <span class="check">✓</span>
-                <span>আপনার নম্বরের শেষ ৪টি ডিজিট</span>
-            </div>
-
-            <div class="submit-row">
-                <span class="check">✓</span>
-                <span>ট্রানজেকশন আইডি (TrxID)</span>
-            </div>
-
-        </div>
-
-    </section>
-
-    <footer class="footer">
-        <div class="thank-you">Thank You ✦</div>
-        <p>© 2026 TPX HASAN</p>
-        <p>Payment Information • Please Verify Details</p>
-    </footer>
-
-</main>
-
-<div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div id="main">
+    <div class="grid-bg"></div>
+    <div class="header">
+      <div class="title-text">⚜️ XTR TRADING COMMUNITY ⚜️</div>
+    </div>
+    <div class="sys-bar">
+      <div><span class="live-dot"></span>LIVE</div>
+      <div id="timer-text">00:30</div>
+      <div id="ping-text">PING : --MS</div>
+    </div>
+    <div id="content"></div>
+  </div>
+</div>
 
 <script>
-let toastTimer;
+/* Local password — Firebase removed */
+const LOGIN_PASSWORD = "hasanjcd037";
+const API_URL = "https://draw.ar-lottery01.com/WinGo/WinGo_30S/GetHistoryIssuePage.json";
 
-function showToast(message) {
-    const toast = document.getElementById('toast');
+var balance = "9999.00";
+var state = "wingo";
+var isScanning = false;
+var currentResultSz = "--";
+var currentResultNum = "--";
+var currentPeriod = null;
+var currentColorName = "--";
+var isOpen = false;
+var isUnlocked = false;
+var lastCycle = -1;
 
-    toast.textContent = message;
-    toast.classList.add('show');
+var spiderImg = '<svg width="30" height="30" viewBox="0 0 30 30"><circle cx="15" cy="15" r="12" fill="#1a0000" stroke="#ff0000" stroke-width="2"/><circle cx="15" cy="15" r="5" fill="#ff0000"/><line x1="15" y1="3" x2="15" y2="10" stroke="#ff0000" stroke-width="1.5"/><line x1="15" y1="20" x2="15" y2="27" stroke="#ff0000" stroke-width="1.5"/><line x1="3" y1="15" x2="10" y2="15" stroke="#ff0000" stroke-width="1.5"/><line x1="20" y1="15" x2="27" y2="15" stroke="#ff0000" stroke-width="1.5"/></svg>';
 
-    clearTimeout(toastTimer);
+var spiderImgSpin = spiderImg.replace('<svg ', '<svg style="animation:spin 2.5s linear infinite" ');
 
-    toastTimer = setTimeout(() => {
-        toast.classList.remove('show');
-    }, 2200);
+function checkPassword() {
+  const input = document.getElementById("pass-input").value;
+  const msg = document.getElementById("pass-msg");
+
+  if (!input) {
+    msg.innerText = "ENTER PASSWORD";
+    return;
+  }
+
+  msg.innerText = "CHECKING...";
+
+  if (input === LOGIN_PASSWORD) {
+    isUnlocked = true;
+    document.getElementById("pass-box").style.display = "none";
+    document.getElementById("pass-input").value = "";
+    msg.innerText = "";
+
+    initSystem();
+    generateNewResult();
+  } else {
+    msg.innerText = "INVALID PASSWORD";
+  }
 }
 
-async function copyNum(number, provider, button) {
-    try {
-        if (navigator.clipboard && window.isSecureContext) {
-            await navigator.clipboard.writeText(number);
-        } else {
-            const input = document.createElement('textarea');
+document.getElementById("pass-input").addEventListener("keydown", function(e) {
+  if (e.key === "Enter") checkPassword();
+});
 
-            input.value = number;
-            input.setAttribute('readonly', '');
-            input.style.position = 'fixed';
-            input.style.left = '-9999px';
+function openM() {
+  if (isOpen) return;
 
-            document.body.appendChild(input);
-            input.select();
+  document.getElementById("mini").style.display = "none";
+  document.getElementById("main-wrapper").style.display = "flex";
+  isOpen = true;
 
-            const copied = document.execCommand('copy');
-            input.remove();
+  if (!isUnlocked) {
+    document.getElementById("pass-box").style.display = "flex";
+  } else {
+    document.getElementById("pass-box").style.display = "none";
+  }
+}
 
-            if (!copied) {
-                throw new Error('Copy failed');
-            }
-        }
+function closeM() {
+  isOpen = false;
+  document.getElementById("main-wrapper").style.display = "none";
+  document.getElementById("mini").style.display = "flex";
+}
 
-        const previousText = button.innerHTML;
+function actionClick() {
+  if (!isScanning && isUnlocked) generateNewResult();
+}
 
-        button.innerHTML = '✓ COPIED';
-        showToast('✓ ' + provider + ' নম্বর কপি হয়েছে!');
+function addOne(str) {
+  if (!str) return str;
 
-        setTimeout(() => {
-            button.innerHTML = previousText;
-        }, 1600);
+  let m = String(str).match(/(\d+)$/);
+  if (!m) return str;
 
-    } catch (error) {
-        showToast('কপি হয়নি — নম্বরটি হাতে কপি করুন');
+  let numStr = m[1];
+  let prefix = String(str).substring(0, String(str).length - numStr.length);
+  let s = (BigInt(numStr) + 1n).toString();
+
+  while (s.length < numStr.length) s = "0" + s;
+
+  return prefix + s;
+}
+
+function getP() {
+  let d = new Date();
+  let total = d.getHours() * 3600 + d.getMinutes() * 60 + d.getSeconds();
+  let interval = Math.floor(total / 30) + 1;
+
+  return String(d.getFullYear()) +
+    String(d.getMonth() + 1).padStart(2, "0") +
+    String(d.getDate()).padStart(2, "0") +
+    "1000" + String(interval).padStart(4, "0");
+}
+
+async function fetchData() {
+  try {
+    let res = await fetch(API_URL + "?ts=" + Date.now());
+    if (!res.ok) return false;
+
+    let data = await res.json();
+
+    if (data?.data?.list?.length > 0) {
+      let lst = data.data.list;
+      let issue = lst[0].issueNumber || lst[0].issue;
+      let nextP = addOne(issue);
+      let lastNum = parseInt(lst[0].number, 10);
+
+      if (!Number.isFinite(lastNum) || !nextP) return false;
+
+      let actual = lastNum >= 5 ? "BIG" : "SMALL";
+
+      if (currentPeriod !== nextP) {
+        currentPeriod = nextP;
+        applyPrediction(nextP, actual);
+        return true;
+      }
     }
-}
-</script>
+  } catch (e) {
+    console.log("Result API unavailable:", e);
+  }
 
+  return false;
+}
+
+/* Random display only; this cannot reliably predict future results. */
+function applyPrediction(periodText, actualResult) {
+  let predictedBS = Math.random() < 0.5
+    ? (actualResult === "BIG" ? "SMALL" : "BIG")
+    : actualResult;
+
+  let luckyNum = predictedBS === "BIG"
+    ? Math.floor(Math.random() * 5) + 5
+    : Math.floor(Math.random() * 5);
+
+  predictedBS = luckyNum >= 5 ? "BIG" : "SMALL";
+
+  let cName;
+
+  if (luckyNum === 0 || luckyNum === 5) {
+    cName = "VIOLET";
+  } else if ([1, 3, 7, 9].includes(luckyNum)) {
+    cName = "GREEN";
+  } else {
+    cName = "RED";
+  }
+
+  currentResultSz = predictedBS;
+  currentResultNum = luckyNum;
+  currentColorName = cName;
+  currentPeriod = periodText;
+}
+
+async function generateNewResult() {
+  if (isScanning || !isUnlocked) return;
+
+  isScanning = true;
+  state = "scanning";
+  render();
+
+  let apiSuccess = await fetchData();
+  await new Promise(resolve => setTimeout(resolve, 3000));
+
+  if (!apiSuccess || !currentPeriod) {
+    currentPeriod = getP();
+    let n = Math.floor(Math.random() * 10);
+    applyPrediction(currentPeriod, n >= 5 ? "BIG" : "SMALL");
+  }
+
+  state = "result";
+  isScanning = false;
+  render();
+}
+
+function render() {
+  let cont = document.getElementById("content");
+
+  if (state === "wingo") {
+    cont.innerHTML =
+      '<div class="ai-result-box">' +
+      '<div class="spider-ring">' + spiderImg + '</div>' +
+      '<div class="text-group">' +
+      '<div class="status-title">READY</div>' +
+      '<div class="status-sub">SPIDER MODE</div>' +
+      '<div class="status-desc">BALANCE ৳' + balance + '</div>' +
+      '</div></div>' +
+      '<div class="buttons-area">' +
+      '<button class="btn btn-action" onclick="actionClick()">START</button>' +
+      '<button class="btn btn-hide" onclick="closeM()">HIDE</button>' +
+      '</div>';
+
+  } else if (state === "scanning") {
+    cont.innerHTML =
+      '<div class="ai-result-box">' +
+      '<div class="spider-ring">' + spiderImgSpin + '</div>' +
+      '<div class="text-group"><div class="status-sub" id="prog-txt" style="font-size:16px">0%</div></div>' +
+      '<div class="progress-bar"><div class="progress-fill" id="prog-fill"></div></div>' +
+      '</div>' +
+      '<div class="buttons-area">' +
+      '<button class="btn btn-action" disabled>WAIT</button>' +
+      '<button class="btn btn-hide" onclick="closeM()">HIDE</button>' +
+      '</div>';
+
+    clearInterval(window.progInt);
+
+    let p = 0;
+
+    window.progInt = setInterval(function() {
+      p += 2;
+
+      let pt = document.getElementById("prog-txt");
+      let pf = document.getElementById("prog-fill");
+
+      if (pt && pf) {
+        pt.innerText = Math.min(p, 100) + "%";
+        pf.style.width = Math.min(p, 100) + "%";
+      }
+
+      if (p >= 100) clearInterval(window.progInt);
+    }, 60);
+
+  } else if (state === "result") {
+    let last6 = currentPeriod
+      ? currentPeriod.slice(-6)
+      : getP().slice(-6);
+
+    let numSvg =
+      '<svg width="28" height="28" viewBox="0 0 28 28">' +
+      '<circle cx="14" cy="14" r="12" fill="#1a0000" stroke="#ff0000" stroke-width="1.5"/>' +
+      '<text x="14" y="19" text-anchor="middle" font-family="Orbitron" font-size="16" font-weight="bold" fill="#ff0000">' +
+      currentResultNum + '</text></svg>';
+
+    let color = currentColorName === "GREEN" ? "#00ff41" :
+      currentColorName === "VIOLET" ? "#bc4bff" : "#ff2a2a";
+
+    cont.innerHTML =
+      '<div class="ai-result-box">' +
+      '<div class="ai-result-row">' +
+      '<div class="text-result">' + currentResultSz + '</div>' +
+      '<div class="num-container">' +
+      '<div class="num-spin-border"></div>' +
+      '<div class="result-num-img">' + numSvg + '</div>' +
+      '</div></div>' +
+      '<div class="period-wrapper"><div class="glass-period-box">PERIOD NO : ' + last6 + '</div></div>' +
+      '<div class="color-tag" style="color:' + color + '">' + currentColorName + '</div>' +
+      '</div>' +
+      '<div class="buttons-area">' +
+      '<button class="btn btn-action" onclick="actionClick()">EXECUTE</button>' +
+      '<button class="btn btn-hide" onclick="closeM()">HIDE</button>' +
+      '</div>';
+  }
+}
+
+function calculateRemainingTime() {
+  let sec = new Date().getSeconds();
+  return sec < 30 ? 30 - sec : 60 - sec;
+}
+
+function getCycleIndex() {
+  let d = new Date();
+  return Math.floor(
+    (d.getHours() * 3600 + d.getMinutes() * 60 + d.getSeconds()) / 30
+  );
+}
+
+setInterval(function() {
+  let rem = calculateRemainingTime();
+  let tt = document.getElementById("timer-text");
+
+  if (tt) {
+    tt.innerText = "00:" + (rem < 10 ? "0" : "") + rem;
+  }
+
+  let pt = document.getElementById("ping-text");
+
+  if (pt) {
+    pt.innerText = "PING : " + (Math.floor(Math.random() * 31) + 20) + "MS";
+  }
+
+  let cyc = getCycleIndex();
+
+  if (
+    lastCycle !== -1 &&
+    cyc !== lastCycle &&
+    isOpen &&
+    !isScanning &&
+    isUnlocked
+  ) {
+    generateNewResult();
+  }
+
+  lastCycle = cyc;
+}, 1000);
+
+async function initSystem() {
+  await fetchData();
+}
+
+/* Drag support */
+var dragItem = document.getElementById("main-wrapper");
+var active = false;
+var currentX = 0, currentY = 0, initialX = 0, initialY = 0;
+var xOffset = 0, yOffset = 0;
+
+window.addEventListener("touchstart", dragStart, {passive:false});
+window.addEventListener("touchend", dragEnd, {passive:false});
+window.addEventListener("touchmove", drag, {passive:false});
+window.addEventListener("mousedown", dragStart, false);
+window.addEventListener("mouseup", dragEnd, false);
+window.addEventListener("mousemove", drag, false);
+
+function dragStart(e) {
+  if (!dragItem.contains(e.target)) return;
+  if (e.target.closest("#pass-box")) return;
+  if (e.target.tagName === "BUTTON" || e.target.tagName === "INPUT") return;
+
+  if (e.type === "touchstart") {
+    initialX = e.touches[0].clientX - xOffset;
+    initialY = e.touches[0].clientY - yOffset;
+  } else {
+    initialX = e.clientX - xOffset;
+    initialY = e.clientY - yOffset;
+  }
+
+  active = true;
+}
+
+function dragEnd() {
+  active = false;
+}
+
+function drag(e) {
+  if (!active) return;
+
+  e.preventDefault();
+
+  if (e.type === "touchmove") {
+    currentX = e.touches[0].clientX - initialX;
+    currentY = e.touches[0].clientY - initialY;
+  } else {
+    currentX = e.clientX - initialX;
+    currentY = e.clientY - initialY;
+  }
+
+  xOffset = currentX;
+  yOffset = currentY;
+
+  dragItem.style.transform =
+    "translate(calc(-50% + " + currentX + "px),calc(-50% + " + currentY + "px))";
+}
+
+window.onload = function() {
+  document.getElementById("main-wrapper").style.display = "none";
+  document.getElementById("mini").style.display = "flex";
+  state = "wingo";
+  render();
+};
+</script>
 </body>
 </html>
